@@ -19,3 +19,11 @@ total_summary <- SusCoil_df %>% summarize(Mean=mean(PSI), Median=median(PSI), Va
                            
 # lot_summary with manufacturing lot
 lot_summary = SusCoil_df %>% group_by(Manufacturing_Lot) %>% summarize(Mean=mean(PSI), Median=median(PSI), Variance=var(PSI),SD=sd(PSI))
+
+# Sample T-test
+t.test(SusCoil_df$PSI, mu=1500)
+
+# T_test for each manufacturing lot
+t.test(subset(SusCoil_df,Manufacturing_Lot=="Lot1")$PSI, mu = 1500)
+t.test(subset(SusCoil_df,Manufacturing_Lot=="Lot2")$PSI, mu = 1500)
+t.test(subset(SusCoil_df,Manufacturing_Lot=="Lot3")$PSI, mu = 1500)
